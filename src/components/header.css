@@ -1,0 +1,23 @@
+.headNav {
+    background-color: rgb(255, 78, 146);
+}
+
+.footNav {
+    background-color: rgb(255, 78, 146);
+    /* display: flex;
+    justify-content: center; */
+    /* position: fixed;
+    left: 0;
+    bottom: 0; */
+    width: 100%;
+    /* background-color: #f8f8f8; */
+    padding: 8px;
+    text-align: center;
+    font-size: 14px;
+    /* color: #555; */
+
+}
+
+span {
+    color: rgb(255, 255, 255);
+}
