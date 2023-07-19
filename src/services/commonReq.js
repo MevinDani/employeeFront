@@ -9,11 +9,12 @@ export const commonReq = async (method, url, body, header) => {
         data: body
     }
 
-    return axios(config).then((response) => {
-        console.log(response);
+    return axios(config).then(response => {
+        // console.log(response);
         return response
-    }).catch((error) => {
+    }).catch(error => {
         console.log(error);
+        return error
     })
 }
 
