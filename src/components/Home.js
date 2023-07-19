@@ -3,7 +3,7 @@ import Button from 'react-bootstrap/Button';
 import { Link } from 'react-router-dom'
 import Tables from './Table';
 import Loading from './Loading';
-import { registerContext } from './ContextShare';
+import { deleteContext, registerContext } from './ContextShare';
 import Alert from 'react-bootstrap/Alert';
 import { allEmpData, deleteUser } from '../services/allapi';
 
@@ -11,6 +11,9 @@ import { allEmpData, deleteUser } from '../services/allapi';
 function Home() {
 
     const { registerData, setRegisterData } = useContext(registerContext)
+    // delete context
+    const { deleteData, setDeleteData } = useContext(deleteContext)
+
     const [spin, setspin] = useState(true)
     // state to store search
     const [uname, setUname] = useState('')
@@ -25,8 +28,12 @@ function Home() {
     }
 
     const deleteEmployee = async (id) => {
-        await deleteUser(id)
-        getEmpData()
+        const res = await deleteUser(id)
+        console.log(res);
+        if (res.status == 201) {
+            setDeleteData(res.data.data)
+            getEmpData()
+        }
     }
 
     useEffect(() => {
@@ -42,6 +49,12 @@ function Home() {
             {
                 registerData ? <Alert key='success' variant='success' onClose={() => setRegisterData('')} dismissible>
                     {registerData.firstName} is registered successfully
+                </Alert> : ''
+            }
+
+            {
+                deleteData ? <Alert key='danger' variant='danger' onClose={() => setDeleteData('')} dismissible>
+                    {deleteData.firstName} is deleted successfully
                 </Alert> : ''
             }
 

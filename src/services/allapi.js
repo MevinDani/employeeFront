@@ -21,3 +21,8 @@ export const userById = async (userId) => {
 export const deleteUser = async (userId) => {
     return commonReq('DELETE', `${BASE_URL}/employee/delete/${userId}`, {})
 }
+
+// edit
+export const editEmployee = async (id, body, headers) => {
+
+}

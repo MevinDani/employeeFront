@@ -15,7 +15,9 @@ function ContextShare({ children }) {
     return (
         <div>
             <registerContext.Provider value={{ registerData, setRegisterData }}>
-                {children}
+                <deleteContext.Provider value={{ deleteData, setDeleteData }}>
+                    {children}
+                </deleteContext.Provider>
             </registerContext.Provider>
         </div>
     )
